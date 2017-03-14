@@ -25,7 +25,7 @@ class PupImage extends Component {
     req = {
       Method: 'GET',
       headers: {
-      Authorization: 'Client-ID 2430633018d364b',
+      Authorization: 'Client-ID ########',
       Accept: 'application/json'
       }
     }
