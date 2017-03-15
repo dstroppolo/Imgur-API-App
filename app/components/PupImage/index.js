@@ -13,7 +13,7 @@ import {
 const req = {
   Method: 'GET',
   headers: {
-  Authorization: 'Client-ID 2430633018d364b',
+  Authorization: 'Client-ID ###########',
   Accept: 'application/json'
   }
 };
@@ -41,21 +41,12 @@ class PupImage extends Component {
       });
     }
 
-<<<<<<< HEAD
     getImageId = () => {
       fetch('https://api.imgur.com/3/gallery/album/'+this.state.currentAlbumID, req)
         .then((response) =>    {return response.json()})
         .then((res) =>         this.setState({currentImage: res.data.images[0].link}))
         .catch((error) =>      {console.warn(error);
         });
-=======
-    req = {
-      Method: 'GET',
-      headers: {
-      Authorization: 'Client-ID ########',
-      Accept: 'application/json'
-      }
->>>>>>> origin/master
     }
 
     incrementImage = () => {
