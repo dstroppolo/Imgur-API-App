@@ -6,7 +6,6 @@ import {
   View,
   TouchableHighlight
 } from 'react-native';
-import styles from './Button';
 
 class Button extends Component {
   constructor(props){
@@ -16,7 +15,7 @@ class Button extends Component {
   render(){
     return(
       <TouchableHighlight>
-        <Text style={buttonStyles.pupButton} onPress={this.props.func}>{this.props.label}</Text>
+        <Text style={buttonStyles.pupButton}>{this.props.label}</Text>
       </TouchableHighlight>
     );
   }
@@ -25,12 +24,12 @@ class Button extends Component {
 const buttonStyles = StyleSheet.create({
   pupButton: {
     color: 'white',
-    fontSize: 20,
+    fontSize: 30,
     backgroundColor: '#0096f4',
     padding: 10,
     borderRadius: 5,
     alignItems: 'flex-end',
-    marginBottom: 55,
+
   }
 
 });

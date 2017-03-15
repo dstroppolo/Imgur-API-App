@@ -7,7 +7,6 @@
 import React, { Component } from 'react';
 import Button from './app/components/Button';
 import PupImage from './app/components/PupImage';
-
 import {
   AppRegistry,
   StyleSheet,
@@ -21,7 +20,6 @@ export default class NamApp extends Component {
     return (
       <View style={styles.container}>
         <PupImage />
-        <Button label = 'I want pups'/>
       </View>
     );
   }

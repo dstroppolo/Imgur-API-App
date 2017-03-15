@@ -6,17 +6,21 @@ import {
   View,
   TouchableHighlight
 } from 'react-native';
-import styles from './Button';
+
 
 class Button extends Component {
   constructor(props){
     super(props);
   }
 
+  onButtonPress() {
+    alert('from button class');
+  }
+
   render(){
     return(
-      <TouchableHighlight>
-        <Text style={buttonStyles.pupButton}>{this.props.label}</Text>
+      <TouchableHighlight onPress={this.onButtonPress}>
+        <Text style={buttonStyles.pupButton} >{this.props.label}</Text>
       </TouchableHighlight>
     );
   }
