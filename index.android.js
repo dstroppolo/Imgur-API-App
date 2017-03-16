@@ -18,20 +18,11 @@ export default class NamApp extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
+
         <PupImage />
-      </View>
+
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-});
 
 AppRegistry.registerComponent('NamApp', () => NamApp);

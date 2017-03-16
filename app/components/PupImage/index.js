@@ -22,56 +22,92 @@ class PupImage extends Component {
   constructor(props){
     super(props);
     this.state = {
-      currentAlbumID: null,
-      currentImage: null,
-      currentTitle: null,
-      currentID: 0,
+      tagArray: [],
+      albumIdArray: [],
+      albumLinkArray: [],
+      imageLink: null,
+      tagKey: 0,
+      galleryKey: 0,
     };
   }
 
+  loadCurrentTag = () => {
+    fetch('https://api.imgur.com/3/gallery/t/pup', req)
+      .then((response) => {return response.json()} )
+      .then((res) => {this.setState({tagArray: res.data.items})})
+      .catch((error) => alert(error)); 
+  }
+
+  createAlbumIdArray = () => {
+    let t = this.state.tagArray;
+    for(let x = 0; x < t.length; x++){
+      if(t[x].is_album) 
+        this.state.albumIdArray.push(t[x].id)
+    }
+  }
+
+  createImageLinkArray = () => {
+    let id = this.state.albumIdArray;
+    for(let x = 0; x < id.length; x++){
+      fetch('https://api.imgur.com/3/gallery/album/'+id[x], req)
+      .then((response) => {return response.json()} )
+      .then((res) => {this.setState({albumLinkArray: res.data.link})})
+      .catch((error) => alert(error)); 
+    }
+    alert(this.state.albumLinkArray[0]);
+  }
 
   getAlbumId = () => {
-    let id = this.state.currentID;
-    fetch('https://api.imgur.com/3/gallery/t/pupper', req)
-      .then((response) =>    { return response.json()} )
-      .then((res) =>         this.setState({currentAlbumID: res.data.items[id].id, currentTitle: res.data.items[id].title}))
-      .then(() =>            this.getImageId())
-      .then(()=>             this.incrementImage())
-      .catch((error) =>      {console.warn(error);
-      });
-    }
 
-<<<<<<< HEAD
-    getImageId = () => {
-      fetch('https://api.imgur.com/3/gallery/album/'+this.state.currentAlbumID, req)
-        .then((response) =>    {return response.json()})
-        .then((res) =>         this.setState({currentImage: res.data.images[0].link}))
-        .catch((error) =>      {console.warn(error);
-        });
-=======
-    req = {
-      Method: 'GET',
-      headers: {
-      Authorization: 'Client-ID ########',
-      Accept: 'application/json'
-      }
->>>>>>> origin/master
-    }
+      return this.state.tagArray[this.state.tagKey].id;
 
-    incrementImage = () => {
-      this.setState({currentID: this.state.currentID + 1});
-    }
+  }
+
+  incrementTagKey = () => {
+    this.setState({tagKey: this.state.tagKey + 1});
+  }
+
+  decrementTagKey = () => {
+    this.setState({tagKey: this.state.tagKey - 1});
+  }
+
+
 
   render(){
     return(
-      <View>
-        <Image source={{uri: this.state.currentImage}}
-         style={{width: 400, height: 400}} />
-       <Button title = {this.state.currentID == 0 ? "I want pups" : "More!!"} onPress={this.getAlbumId} />
+      <View style = {styles.container}>
+        <View style = {styles.imageWrapper}>
+        <Image source = {{uri: this.state.imageLink}} style={{width: 400, height: 400}} />
+        </View>
+        <View style = {styles.buttonWrapper}>
+          <Button style = {styles.button} title = "Next" onPress={this.createImageLinkArray} />
+          <Button style = {styles.button} title = "Load" onPress={this.loadCurrentTag} />
+          <Button style = {styles.button} title = "Next" onPress={this.createAlbumIdArray} />
+        </View>
+        <Text>{this.state.tagKey}</Text>
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  
+  imageWrapper: {
+    alignItems: 'center',
+  },
+
+  buttonWrapper: {
+    flex: 1,
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+  },
+
+
+});
 
 
 export default PupImage;
