@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import API_KEY from '../../assets/imgurApiKey';
 import {
   AppRegistry,
   StyleSheet,
@@ -13,7 +14,7 @@ import {
 const req = {
   Method: 'GET',
   headers: {
-  Authorization: 'Client-ID ###########',
+  Authorization: 'Client-ID ' + API_KEY,
   Accept: 'application/json'
   }
 };
