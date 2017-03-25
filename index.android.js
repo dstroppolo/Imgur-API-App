@@ -5,8 +5,7 @@
  */
 
 import React, { Component } from 'react';
-import Button from './app/components/Button';
-import PupImage from './app/components/PupImage';
+import App from './app/components/app/';
 import {
   AppRegistry,
   StyleSheet,
@@ -18,20 +17,12 @@ export default class NamApp extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <PupImage />
+      <View>
+        <App />
       </View>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-});
 
 AppRegistry.registerComponent('NamApp', () => NamApp);
