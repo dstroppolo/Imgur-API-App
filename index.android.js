@@ -17,9 +17,7 @@ export default class NamApp extends Component {
 
   render() {
     return (
-      <View>
-        <App />
-      </View>
+        <App style={{flex:1}} />
     );
   }
 }

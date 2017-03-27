@@ -35,9 +35,13 @@ class Interface extends Component {
         };
     }
 
+  componentWillMount = () => {
+      this.getObjectId();
+  }
+
   getObjectId = () => {
     let id = this.state.currentGalleryID;
-    fetch('https://api.imgur.com/3/gallery/t/doggo', req)
+    fetch('https://api.imgur.com/3/gallery/t/cars', req)
       .then((response) =>    { return response.json()} )
       .then((res) =>         {
 
@@ -108,7 +112,7 @@ class Interface extends Component {
     render(){
         return(
 
-            <View>
+            <View  style= {styles.wrapper}>
                 <PupImage 
                     currentObjectID= {this.state.currentObjectID}
                     currentImage= {this.state.currentImage}
@@ -117,13 +121,14 @@ class Interface extends Component {
                     currentAlbumIndex= {this.state.currentAlbumIndex}
                     isAlbum= {this.state.isAlbum}
                     size= {this.state.size}
+                    nextImage= {this.nextImage}
                 />
                 <Buttons
                     currentGalleryID= {this.state.currentGalleryID}
                     isAlbum= {this.state.isAlbum}
                     size= {this.state.size}
-                    onNextAlbum= {this.getObjectId}
                     onNextImage= {this.nextImage}
+                    style= {styles.loadButton}
                  />
             </View>
 
@@ -131,5 +136,19 @@ class Interface extends Component {
     }
 
 }
+
+const styles = StyleSheet.create({
+
+  loadButton: {
+    flex: 1,
+    backgroundColor: 'red',
+  },
+    wrapper: {
+    flex: 1,
+    justifyContent: 'center',
+  }
+
+})
+
 
 export default Interface;
