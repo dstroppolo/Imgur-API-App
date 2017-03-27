@@ -14,14 +14,25 @@ class App extends Component {
 
     render(){
         return(
-
-            <View>
+            <View style={styles.container}>
+                <Image source={require('../../assets/images/paws.png')}  style={styles.backgroundImage} />
                 <Interface />
             </View>
-
         )
     }
-
+    
 }
+
+const styles = StyleSheet.create({
+container: {
+     flex: 1,
+
+     backgroundColor: 'skyblue',
+},
+     backgroundImage:{
+        position: 'absolute',
+   }
+})
+
 
 export default App;

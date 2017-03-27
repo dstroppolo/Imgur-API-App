@@ -27,7 +27,6 @@ render(){
     return(
       <View>
         <View style={styles.loadButton}>
-        <Button title = {currentGalleryID == 0 ? "I want pups" : "MORE!!"} onPress={() => onNextImage('gallery')} />
         </View>
         {this.loadAlbumButtons()}
       </View>
@@ -41,7 +40,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     alignItems: 'center',
     marginTop: 15,
-  }
+  },
 
 })
 
