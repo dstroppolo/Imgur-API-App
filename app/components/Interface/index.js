@@ -138,11 +138,6 @@ class Interface extends Component {
 }
 
 const styles = StyleSheet.create({
-
-  loadButton: {
-    flex: 1,
-    backgroundColor: 'red',
-  },
     wrapper: {
     flex: 1,
     justifyContent: 'center',
